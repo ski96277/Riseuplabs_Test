@@ -16,23 +16,26 @@ class CricketScreen extends StatelessWidget {
       body: GetX<CricketController>(builder: (cricketController) {
         return cricketController.progressbarShow.value
             ? ProgressIndicatorImran()
-            : Container(
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Center(child: Image.asset(cricketImage,width: MediaQuery.of(context).size.width,)),
-                    ListView.builder(
-                        scrollDirection: Axis.vertical,
-                        shrinkWrap: true,
-                        itemCount: cricketController.cricketModelClass.value.matches.length,
-                        itemBuilder: (context, index) {
-                          return ListItem(cricketController.cricketModelClass.value.matches[index].shortName + " " + cricketController.cricketModelClass.value.matches[index].startDate.substring(0, 4), cricketController.cricketModelClass.value.matches[index].teamA.jersey, cricketController.cricketModelClass.value.matches[index].teamA.shortName, TimeDiffrence(cricketController.cricketModelClass.value.matches[index].startDate.substring(0, 10)), cricketController.cricketModelClass.value.matches[index].teamB.shortName, cricketController.cricketModelClass.value.matches[index].teamB.jersey);
-                        })
-                  ],
+            : SingleChildScrollView(
+
+              child: Container(
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Center(child: Image.asset(cricketImage,width: MediaQuery.of(context).size.width,)),
+                      ListView.builder(
+                          scrollDirection: Axis.vertical,
+                          shrinkWrap: true,
+                          itemCount: cricketController.cricketModelClass.value.matches.length,
+                          itemBuilder: (context, index) {
+                            return ListItem(cricketController.cricketModelClass.value.matches[index].shortName + " " + cricketController.cricketModelClass.value.matches[index].startDate.substring(0, 4), cricketController.cricketModelClass.value.matches[index].teamA.jersey, cricketController.cricketModelClass.value.matches[index].teamA.shortName, TimeDiffrence(cricketController.cricketModelClass.value.matches[index].startDate.substring(0, 10)), cricketController.cricketModelClass.value.matches[index].teamB.shortName, cricketController.cricketModelClass.value.matches[index].teamB.jersey,Icon(Icons.sports_cricket,color: Colors.white,));
+                          })
+                    ],
+                  ),
                 ),
-              );
+            );
       }),
     );
   }

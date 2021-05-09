@@ -9,8 +9,9 @@ class ListItem extends StatelessWidget {
   String timeDiffrence;
   String shortNameTeamB;
   String jerseyB;
+  Icon icons;
 
-  ListItem(this.s, this.jerseyA, this.shortNameTeamA, this.timeDiffrence, this.shortNameTeamB, this.jerseyB);
+  ListItem(this.s, this.jerseyA, this.shortNameTeamA, this.timeDiffrence, this.shortNameTeamB, this.jerseyB,this.icons);
 
   @override
   Widget build(BuildContext context) {
@@ -43,10 +44,7 @@ class ListItem extends StatelessWidget {
                           height: 20,
                           width: 20,
                           errorBuilder: (BuildContext context, Object exception, StackTrace stackTrace) {
-                            return Icon(
-                              Icons.sports_cricket,
-                              color: whiteColor,
-                            );
+                            return icons;
                           },
                         ),
                       ),
@@ -92,10 +90,7 @@ class ListItem extends StatelessWidget {
                           height: 20,
                           width: 20,
                           errorBuilder: (BuildContext context, Object exception, StackTrace stackTrace) {
-                            return Icon(
-                              Icons.sports_cricket,
-                              color: whiteColor,
-                            );
+                            return icons;
                           },
                         ),
                       ),

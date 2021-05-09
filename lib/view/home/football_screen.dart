@@ -16,24 +16,26 @@ class FootballScreen extends StatelessWidget {
       body: GetX<FootballController>(builder: (footballController) {
         return footballController.progressbarShow.value
             ? ProgressIndicatorImran()
-            : Container(
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Center(child: Image.asset(footballImage,width: MediaQuery.of(context).size.width,)),
-                    ListView.builder(
-                        scrollDirection: Axis.vertical,
-                        shrinkWrap: true,
-                        itemCount: footballController.footballModelClass.value.matches.length,
-                        itemBuilder: (context, index) {
-                          return ListItem(footballController.footballModelClass.value.matches[index].shortName + " " + footballController.footballModelClass.value.matches[index].startDate.substring(0, 4),footballController.footballModelClass.value.matches[index].teamA.jersey, footballController.footballModelClass.value.matches[index].teamA.shortName, TimeDiffrence(footballController.footballModelClass.value.matches[index].startDate.substring(0, 10)), footballController.footballModelClass.value.matches[index].teamB.shortName, footballController.footballModelClass.value.matches[index].teamB.jersey);
+            : SingleChildScrollView(
+              child: Container(
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Center(child: Image.asset(footballImage,width: MediaQuery.of(context).size.width,)),
+                      ListView.builder(
+                          scrollDirection: Axis.vertical,
+                          shrinkWrap: true,
+                          itemCount: footballController.footballModelClass.value.matches.length,
+                          itemBuilder: (context, index) {
+                            return ListItem(footballController.footballModelClass.value.matches[index].shortName + " " + footballController.footballModelClass.value.matches[index].startDate.substring(0, 4),footballController.footballModelClass.value.matches[index].teamA.jersey, footballController.footballModelClass.value.matches[index].teamA.shortName, TimeDiffrence(footballController.footballModelClass.value.matches[index].startDate.substring(0, 10)), footballController.footballModelClass.value.matches[index].teamB.shortName, footballController.footballModelClass.value.matches[index].teamB.jersey,Icon(Icons.sports_football,color: Colors.white,));
 
-                        })
-                  ],
+                          })
+                    ],
+                  ),
                 ),
-              );
+            );
       }),
     );
   }
